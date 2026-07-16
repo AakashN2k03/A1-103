@@ -157,3 +157,34 @@ Blob Storage
 * Simplified integration
 * Easier retrieval of information
 
+# Model vs Agent vs Tool vs Knowledge
+
+| Feature                   | **Model**                                                           | **Agent**                                                                | **Tool**                                                                | **Knowledge**                                                 |
+| ------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------- |
+| **Definition**            | An AI model (LLM) that understands prompts and generates responses. | An AI application that uses a model to reason, plan, and complete tasks. | A capability or service that an agent uses to perform specific actions. | External data that provides additional context to the agent.  |
+| **Primary Purpose**       | Generate text, code, images, or other AI outputs.                   | Coordinate models, tools, and knowledge to solve user requests.          | Execute actions or retrieve information.                                | Supply relevant information for accurate responses.           |
+| **Reasoning & Planning**  | Generates responses based on the prompt.                            | ✅ Plans and decides the steps needed to complete a task.                 | ❌ No                                                                    | ❌ No                                                          |
+| **Uses External Systems** | ❌ No                                                                | ✅ Yes (through tools)                                                    | ✅ Yes (e.g., APIs, databases, web search)                               | ❌ No                                                          |
+| **Stores Information**    | Only learned parameters from training.                              | ❌ No                                                                     | ❌ No                                                                    | ✅ Yes (documents, databases, files, etc.)                     |
+| **Examples**              | GPT-4.1, GPT-4o, Phi, Llama                                         | HR Agent, Customer Support Agent, Travel Agent                           | Web Search, SQL API, Code Interpreter, Function Calling                 | PDFs, SharePoint, SQL Database, Blob Storage, Azure AI Search |
+
+## Relationship
+
+```text
+                User
+                  │
+                  ▼
+               Agent
+                  │
+      ┌───────────┼───────────┐
+      │           │           │
+      ▼           ▼           ▼
+    Model       Tool     Knowledge
+      │           │           │
+      │     Performs Tasks    │
+      │                       │
+      └───────────┬───────────┘
+                  ▼
+          Generates Response
+```
+
