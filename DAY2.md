@@ -134,3 +134,145 @@ Generate Response
 Evaluate & Iterate
 ```
 
+# Access Models Programmatically
+
+To access a model programmatically, your application communicates with the **deployed model** using an API.
+
+Microsoft Learn summarizes this as requiring **three things**:
+
+1. **Endpoint URL** – Where to send the request.
+2. **Authentication** – How Azure verifies your application (**API Key** or **Microsoft Entra ID**).
+3. **Deployment Name** – Which deployed model should handle the request.
+
+---
+
+# Step 1: Deploy a Model
+
+First, deploy a model from the **Foundry Models Catalog**.
+
+### Example
+
+* **Model:** GPT-4.1
+* **Deployment Name:** `customer-support`
+
+After deployment, Azure provides:
+
+* Endpoint URL
+* API Key *(or you use Microsoft Entra ID)*
+* Deployment Name
+
+---
+
+# Step 2: Get the Required Information
+
+Suppose Azure gives you:
+
+| Property            | Example                                 |
+| ------------------- | --------------------------------------- |
+| **Endpoint URL**    | `https://my-resource.openai.azure.com/` |
+| **API Key**         | `abc123xyz...`                          |
+| **Deployment Name** | `customer-support`                      |
+
+These are the details your application will use to communicate with the deployed model.
+
+---
+
+# Step 3: Authenticate
+
+There are two ways to authenticate.
+
+## Option A: API Key (Simple)
+
+```text
+Application
+      │
+      ▼
+   API Key
+      │
+      ▼
+ Azure AI
+```
+
+**Used mostly for:**
+
+* Development
+* Testing
+* Quick prototypes
+
+---
+
+## Option B: Microsoft Entra ID (Recommended)
+
+```text
+Application
+      │
+      ▼
+Login
+      │
+      ▼
+Microsoft Entra ID
+      │
+Access Token
+      │
+      ▼
+Azure AI
+```
+
+**Recommended for:**
+
+* Production applications
+* Enterprise environments
+* Secure authentication without storing API keys
+
+---
+
+# Step 4: Send the Request
+
+Your application sends:
+
+* Endpoint URL
+* Authentication
+* Deployment Name
+* Prompt
+
+```text
+Application
+     │
+     ├── Endpoint URL
+     ├── API Key / Entra ID Token
+     ├── Deployment Name
+     └── Prompt
+            │
+            ▼
+     Azure AI Model
+            │
+            ▼
+        Response
+```
+
+---
+
+# Code Example (API Key)
+
+```python
+from openai import AzureOpenAI
+
+client = AzureOpenAI(
+    api_key="YOUR_API_KEY",
+    azure_endpoint="https://my-resource.openai.azure.com/",
+    api_version="2024-10-21"
+)
+
+response = client.chat.completions.create(
+    model="customer-support",   # Deployment Name
+    messages=[
+        {
+            "role": "user",
+            "content": "Explain Azure AI Foundry."
+        }
+    ]
+)
+
+print(response.choices[0].message.content)
+```
+
