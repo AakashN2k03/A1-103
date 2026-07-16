@@ -113,3 +113,47 @@ Think of it as the building that contains several offices (projects).
 A Project is a workspace for one AI application.
 
 Everything related to a single AI application is stored inside the project.
+
+---
+
+# Foundry IQ
+
+## Definition
+
+Foundry IQ provides a centralized knowledge connection for a project.
+
+Instead of connecting an agent to many knowledge sources individually, Foundry IQ lets you create one MCP-based connection that can access multiple sources.
+
+## Example
+
+### Without Foundry IQ
+
+```text
+Agent
+├── PDF
+├── SQL
+├── SharePoint
+└── Blob Storage
+```
+
+### With Foundry IQ
+
+```text
+PDF
+SQL
+SharePoint
+Blob Storage
+     │
+     ▼
+ Foundry IQ
+     │
+     ▼
+   Agent
+```
+
+## Benefits
+
+* Centralized knowledge management
+* Simplified integration
+* Easier retrieval of information
+
