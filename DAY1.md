@@ -116,7 +116,7 @@ Everything related to a single AI application is stored inside the project.
 
 ---
 
-# Foundry IQ
+# 6.Foundry IQ
 
 ## Definition
 
