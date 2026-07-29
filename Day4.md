@@ -288,4 +288,61 @@ Benefits
 
 ---
 
+# Fine-Tuning
+
+Fine-tuning trains a pre-trained model on custom data to improve performance for a specific task when prompt engineering isn't enough.
+
+### When to Fine-Tune
+
+- **Consistent Style & Tone** – Maintain a specific brand voice.
+- **Structured Output** – Generate consistent JSON, XML, SQL, etc.
+- **Reduce Prompt Length** – Embed instructions into the model to save tokens.
+- **Distillation** – Transfer knowledge from a large model to a smaller, cheaper model.
+- **Tool Usage** – Improve tool selection and parameter generation.
+
+---
+
+## Fine-Tuning Techniques
+
+### Supervised Fine-Tuning (SFT)
+- Uses labeled prompt-response pairs.
+- Best for well-defined tasks like chat, summarization, and classification.
+
+### Reinforcement Fine-Tuning (RFT)
+- Improves responses using rewards and feedback.
+- Best for reasoning and complex tasks.
+
+### Direct Preference Optimization (DPO)
+- Learns from preferred vs. non-preferred responses.
+- Simpler and more efficient than traditional reinforcement learning.
+
+---
+
+## LoRA (Low-Rank Adaptation)
+
+- A **Parameter-Efficient Fine-Tuning (PEFT)** technique.
+- Keeps the original model **frozen**.
+- Trains only small **adapter layers** instead of the entire model.
+
+### Benefits
+
+- Lower training cost
+- Faster training
+- Less GPU memory
+- Smaller model updates
+- Easy to switch between tasks
+
+---
+
+## Challenges
+
+- Training and hosting costs
+- Requires high-quality training data
+- May need retraining over time
+- Hyperparameter tuning (epochs, batch size, learning rate)
+- Risk of overfitting or model drift
+
+---
+
+
 
