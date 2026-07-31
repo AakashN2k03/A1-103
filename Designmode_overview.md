@@ -96,11 +96,3 @@ Pydantic models in `app/models/schemas.py`. Core tables:
 - **Reconciliation** (`components/Reconciliation/`) — post-publish comparison.
 - **Setup Mode** (`setup-mode`) — users, roles, modules (RBAC).
 
-## Notes
-
-- The **"knowledge base"** commits (Design/Upload/Recon/Publish) refer to `.toon`
-  articles in `react/backend/app_docs/` (e.g. `Design_Mode.toon`). These are **not part
-  of the Design Mode runtime** — they ground the **HelpChat AI assistant**
-  (`routers/help_chat.py`). `Design_Mode.toon` is the authoritative product-level spec.
-- The live `/api/design/*` routes come from `design_mode.py` and
-  `data_migration_app.py` — **not** the `design_mode_new*.py` files.
